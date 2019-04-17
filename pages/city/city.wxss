@@ -1,0 +1,13 @@
+/* pages/city/city.wxss */
+
+/* 搜索框 */
+#search-wrp {
+  margin: 20rpx;
+  padding: 20rpx 12rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 8rpx;
+  font-size: 36rpx;
+}
+#search-wrp  icon {
+  margin-right: 15rpx;
+}

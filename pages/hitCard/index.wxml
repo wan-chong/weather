@@ -1,0 +1,45 @@
+<!--miniprogram/pages/hitCard/index.wxml-->
+<view class='hit-card-page'>
+     <view class='current-date-box'>
+          <view class='arrow-box pre-month'>
+               <image class='arrow-icon left-icon' src='{{imgsrc}}'></image>
+          </view>
+          <view class='current-year-month'>{{currentYear}}-{{currentMonth}}-{{currentDay}}</view>
+          <view class='arrow-box next-month'>
+               <image class='arrow-icon right-icon' src='{{imgsrc}}'></image>
+          </view>
+     </view>
+     <view class='weeks-box'>
+          <view class='week-item' wx:for="{{weeks}}" style='width:{{eachWidth}}'>{{item}}</view>
+     </view>
+     <view class='days-box'>
+
+          <view class='day-item' style='width:{{eachWidth}};height:1rpx' wx:for="{{blockDays}}"></view>
+
+          <view class='day-item' 
+               style='width:{{eachWidth}}' wx:for="{{days}}" 
+               data-date="{{currentYear}}-{{currentMonth}}-{{item.day}}" 
+               data-tap="{{item.canTap}}"
+               data-index="{{index}}" data-day="{{item.day}}" bindtap='dayClick'>
+               <text style="width:{{daytextWidth}};height:{{daytextWidth}};line-height:{{daytextWidth}}" class='day-text {{item.active?"active-day":""}} {{item.canTap?"":"can-tap"}}'>{{item.day}}</text>
+               <view wx:if="{{item.canTap}}" class='card-icon {{item.isCard?"has-card":"no-card"}}'></view>
+          </view>
+
+     </view>
+     <view class='tip-box'>
+          <view class='tip-item tip-has-card'>
+               <view class='tip-icon tip-has-icon'></view>已打卡
+          </view>
+          <view class='tip-item tip-no-card'>
+               <view class='tip-icon tip-no-icon'></view>未打卡
+          </view>
+
+          <view class='tip-item tip-can-card'>
+               <view class='tip-icon tip-can-icon'></view>可打卡
+          </view>
+          <view class='tip-item tip-cant-card'>
+               <view class='tip-icon tip-cant-icon'></view>不可打卡
+          </view>
+     </view>
+     <button class='btn' open-type="share">分享打卡</button>
+</view>

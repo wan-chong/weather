@@ -1,0 +1,212 @@
+/**index.wxss**/
+.container {
+  color: #fff;
+}
+
+.index-bg {
+  position: fixed;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+}
+
+/* 今日天气 */
+#today-weather {
+  width: 100%;
+  height: 740rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  text-align: center;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  width: 100%;
+  margin-bottom: 63rpx;
+  padding-top: 77rpx;
+}
+
+.userinfo-avatar {
+  width: 62rpx;
+  height: 62rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  overflow:hidden;
+}
+
+.userinfo-nickname {
+  height: 62rpx;
+  line-height: 62rpx;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.location {
+  margin-bottom: 34rpx;
+  font-size: 38rpx;
+}
+
+.temperature {
+  margin-bottom: 60rpx;
+  padding-top: 32rpx;
+}
+
+.temperature .temperature-val{
+  font-size: 90rpx;
+  line-height: 90rpx;
+}
+
+.temperature .temperature-unit {
+  font-size: 32rpx;
+  position: relative;
+  top: -85rpx;
+
+}
+
+.weather {
+  margin-bottom: 30rpx;
+  font-size: 38rpx;
+}
+
+.weather .icon {
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: top;
+  margin-right: 10rpx;
+}
+
+.weather-detail {
+  height: 118rpx;
+  font-size: 30rpx;
+  line-height: 59rpx;
+}
+
+.weather-detail-left {
+  padding-right:20rpx;
+  text-align: right;
+  border-right: 1px solid #fff;
+}
+
+.weather-detail-right {
+  padding-left:20rpx;
+  text-align: left;
+}
+
+.update-time {
+  text-align: right;
+  line-height: 80rpx;
+  font-size: 24rpx;
+}
+
+/* section 公共样式 */
+.section {
+  font-size: 30rpx;
+  color: #fff;
+  background: rgba(0, 0, 0, .5);
+}
+.section-title {
+  height: 86rpx;
+  line-height: 86rpx;
+  border-bottom: 1rpx solid #fff;
+  text-align: center;
+}
+
+/* 小时天气 */
+#hour-weather {
+  height: 524rpx;
+}
+
+#hour-weather swiper {
+  height: 430rpx;
+  text-align: center;
+  line-height: 56rpx;
+}
+
+#hour-weather swiper-item {
+  padding-top: 10rpx;
+}
+
+#hour-weather .icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+/* 一周天气预报 */
+#week-weather {
+  height: 848rpx;
+  line-height: 54rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+#week-weather .section-content {
+  position: relative;
+  /* position: absolute;
+  top: 94rpx; */
+  padding-top: 16rpx;
+  padding-bottom: 26rpx;
+}
+
+#week-weather .flex-row-wrp {
+  width: 175%;
+}
+
+#week-weather .icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+#week-weather .icon-d {
+  margin-bottom: 280rpx;
+}
+
+#week-weather .canvas-wrp {
+  position: absolute;
+  top: 162rpx;
+  width: 175%;
+  height: 280rpx;
+}
+
+/* 生活指数 */
+#living-index {
+  border-bottom: 1rpx solid #fff;
+}
+
+#living-index .section-title {
+  margin-bottom: 30rpx; 
+}
+#living-index .item {
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+  height: 125rpx;
+}
+
+#living-index .icon-wrp {
+  margin-right: 20rpx;
+  width: 82rpx;
+  text-align: center;
+  line-height: 112rpx
+}
+
+#living-index .iconfont {
+  font-size: 82rpx;
+}
+
+.index-title {
+  margin-bottom: 16rpx;
+  line-height: 30rpx;
+}
+
+.index-detail {
+  font-size: 24rpx;
+}
+
+/* footer */
+#footer {
+  height: 70rpx;
+  font-size: 20rpx;
+  line-height: 70rpx;
+  text-align: center;
+}

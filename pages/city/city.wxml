@@ -1,0 +1,9 @@
+<!--pages/city/city.wxml-->
+<!-- 搜索框 -->
+<view class='flex-row-wrp' id='search-wrp' >
+  <icon type='search'></icon>
+  <input class='flex-item' placeholder='请输入城市关键字搜索'></input>
+</view>
+<!-- 当前定位 -->
+<!-- 热门城市 -->
+<!-- 全部城市 -->

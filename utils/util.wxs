@@ -1,0 +1,9 @@
+// /utils/util.wxs
+
+var sliceStr = function (str, start, end) {
+  return str.slice(start, end);
+};
+
+module.exports = {
+  sliceStr: sliceStr
+}

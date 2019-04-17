@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../libs/ec-canvas/ec-canvas"
+  },
+  "window": {
+    "enablePullDownRefresh": true
+  }
+}

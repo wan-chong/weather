@@ -1,0 +1,140 @@
+<!--index.wxml-->
+<wxs src="../../utils/util.wxs" module="utils"/>
+<scroll-view class="container">
+  <!-- 背景图 -->
+  <image class="index-bg" src="../../assets/images/index_bg.png"></image>
+
+  <!-- 今日天气 -->
+  <view id="today-weather">
+    <view class="userinfo">
+      <view class="userinfo-avatar"><open-data type="userAvatarUrl"></open-data></view>
+      <view class="userinfo-nickname"><open-data type="userNickName"></open-data>, 您好</view>
+    </view>
+
+    <view class="location">
+      <text class="location" bindtap="goToCity" >{{ city }}</text>
+      <text class="iconfont icon-location"></text>
+    </view>
+
+    <view wx:if="{{ now }}" class="temperature">
+      <text class="temperature-val">{{ now.tmp}}</text>
+      <text class="temperature-unit">℃</text>
+    </view> 
+
+    <view  wx:if="{{ now }}" class="weather">
+      <image class='icon' src='{{ iconUrl }}{{ now.cond_code }}.png'></image>
+      <text class='weather-txt'>{{ now.cond_txt }}</text>
+    </view>
+
+    <view class="flex-row-wrp weather-detail">
+      <view class="flex-item weather-detail-left">
+        <view>{{ now.wind_dir }} {{ now.wind_sc }}级</view>
+        <view>湿度 {{ now.hum }}</view>
+      </view>
+      <view class="flex-item weather-detail-right">
+        <view>大气压 {{ now.pres }}</view>
+        <view>降水量 {{ now.pcpn }}</view>
+      </view>
+    </view>
+
+    <view class="update-time">
+      <text>更新于： {{ update }}</text>
+    </view>
+  </view>
+
+  <!-- 24小时天气 -->
+  <view class="section" id="hour-weather">
+    <view class="section-title">24小时预报</view>
+    <swiper 
+      indicator-dots="{{indicatorDots}}"
+      indicator-active-color='white'>
+      <swiper-item class="flex-row-wrp">
+        <block 
+          wx:for="{{ hoursData }}"
+          wx:for-index="idx"
+          wx:for-item="item"
+          wx:key="unique">
+          <view 
+            wx:if="{{ idx < 4 }}"
+            class="flex-item hour-weather-item">
+              <view>{{ utils.sliceStr(item.time, 11, 13) }}时</view>
+              <view>{{ item.cond_txt }}</view>
+              <view class="icon-wrp flex-row-wrp">
+                <image class='icon' src='{{ iconUrl }}{{ item.cond_code }}.png'></image>
+              </view>
+              <view>{{ item.tmp }}℃</view>
+              <view>{{ item.wind_dir }}</view>
+              <view>风速{{ item.wind_sc }}级</view>
+          </view>
+        </block>
+      </swiper-item>
+      <swiper-item class="flex-row-wrp">
+        <block 
+          wx:for="{{ hoursData }}"
+          wx:for-index="idx"
+          wx:for-item="item"
+          wx:key="unique">
+          <view 
+            wx:if="{{ idx > 3 }}"
+            class="flex-item hour-weather-item">
+              <view>{{ utils.sliceStr(item.time, 11, 13) }}时</view>
+              <view>{{ item.cond_txt }}</view>
+              <view class="icon-wrp">
+                <image class='icon' src='{{ iconUrl }}{{ item.cond_code }}.png'></image>
+              </view>
+              <view>{{ item.tmp }}℃</view>
+              <view>{{ item.wind_dir }}</view>
+              <view>风速{{ item.wind_sc }}级</view>
+          </view>
+        </block>
+      </swiper-item>
+    </swiper>
+  </view>
+</scroll-view>
+
+<!-- 一周天气预报 -->
+<view class="section" id="week-weather">
+  <view class='section-title'>一周天气预报</view>
+  <scroll-view class='section-content' scroll-x="true">
+    <view class='flex-row-wrp'>
+      <view 
+        wx:if="{{ weekData }}"
+        class='flex-item'
+        wx:for='{{ weekData }}'
+        wx:for-item='item'
+        wx:for-index='idx'
+        wx:key='unique'>
+        <view>{{ idx === 0 ? '今天' : idx === 1 ? '明天' :  idx === 2 ? '后天' : utils.sliceStr(item.date, 5, 10) }}</view>
+        <view>{{ item.cond_txt_d }} </view>
+        <view class="icon-wrp icon-d">
+          <image class='icon' src='{{ iconUrl }}{{ item.cond_code_d }}.png'></image>
+        </view>
+        <view class="icon-wrp">
+          <image class='icon' src='{{ iconUrl }}{{ item.cond_code_n }}.png'></image>
+        </view>
+        <view>{{ item.cond_txt_n }}</view>
+        <view>{{ item.wind_dir }}</view>
+        <view>风速{{ item.wind_sc }}级</view>
+      </view>
+    </view>
+    <view class="canvas-wrp">
+      <ec-canvas id='temperature-dom-line' canvas-id='temperature-line' ec="{{ ec }}"></ec-canvas>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 生活指数 -->
+<view class="section" id="living-index">
+  <view class='section-title'>生活指数</view>
+  <view wx:if="{{ livingIndex }}" wx:for="{{ livingIndexList }}" wx:for-item="item" wx:for-index="index" wx:key="unique" class='flex-row-wrp item'>
+    <view class='icon-wrp'><text class='iconfont icon-{{ item.iconClass }}'></text></view>
+    <view class='flex-item'>
+      <view class='index-title'>{{ item.name }}指数：{{ livingIndex[index].brf }}</view>
+      <view class='index-detail'>{{ livingIndex[index].txt }}</view>
+    </view>
+  </view>
+</view>
+
+<!-- footer -->
+<view class='section' id='footer'>developed by wanchong</view>
+
