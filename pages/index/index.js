@@ -82,7 +82,7 @@ function initChart(canvas, width, height) {
         formatter: '{c} °C'
       },
       data: [11, 12, 12, 9, 8, 12, 10]
-    }, 
+    },
     {
       name: '最低气温',
       type: 'line',
@@ -119,14 +119,18 @@ Page({
     weekData: null
   },
   // 事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  goToCity: function() {
+  goTo: function (event) {
+    let pageName = event.target.dataset.goto;
+    if (!pageName) {
+      pageName = 'index';
+    }
     wx.navigateTo({
-      url: '../line/index',
+      url: '../' + pageName + '/' + pageName,
     })
   },
   onLoad: function () {
@@ -159,7 +163,7 @@ Page({
         if (res.authSetting['scope.userLocation']) {
           return indexAPI.getUserLocation();
         } else {
-          let authP = new Promise(function(resolve, reject) {
+          let authP = new Promise(function (resolve, reject) {
             wx.authorize({
               scope: 'scope.userLocation',
               success() {
@@ -204,19 +208,19 @@ Page({
   getWeatherLive() {
     let self = this;
     indexAPI
-    .getWeatherLive(self.data.city)
-    .then(res => {
-      self.setData({
-        now: res.now,
-        update: res.update.loc
+      .getWeatherLive(self.data.city)
+      .then(res => {
+        self.setData({
+          now: res.now,
+          update: res.update.loc
+        });
+      }).catch(err => {
+        wx.showToast({
+          title: '出错了：' + err,
+          icon: 'none',
+          duration: 2000
+        })
       });
-    }).catch(err => {
-      wx.showToast({
-        title: '出错了：' + err,
-        icon: 'none',
-        duration: 2000
-      })
-    });
   },
 
   /**
@@ -225,18 +229,18 @@ Page({
   getHoursWeather() {
     let self = this;
     indexAPI
-    .getHoursWeather(self.data.city)
-    .then(res => {
-      self.setData({
-        hoursData: res.hourly
+      .getHoursWeather(self.data.city)
+      .then(res => {
+        self.setData({
+          hoursData: res.hourly
+        });
+      }).catch(err => {
+        wx.showToast({
+          title: '出错了：' + err,
+          icon: 'none',
+          duration: 2000
+        })
       });
-    }).catch(err => {
-      wx.showToast({
-        title: '出错了：' + err,
-        icon: 'none',
-        duration: 2000
-      })
-    });
   },
 
   /**
@@ -248,7 +252,7 @@ Page({
       .getWeekWeather(self.data.city)
       .then(res => {
         self.setData({
-            weekData: res.daily_forecast
+          weekData: res.daily_forecast
         });
       }).catch(err => {
         wx.showToast({
@@ -265,17 +269,17 @@ Page({
   getLivingIndex() {
     let self = this;
     indexAPI
-    .getLivingIndex(self.data.city)
+      .getLivingIndex(self.data.city)
       .then(res => {
-      self.setData({
-        livingIndex: res.lifestyle
+        self.setData({
+          livingIndex: res.lifestyle
+        });
+      }).catch(err => {
+        wx.showToast({
+          title: '出错了：' + err,
+          icon: 'none',
+          duration: 2000
+        })
       });
-    }).catch(err => {
-      wx.showToast({
-        title: '出错了：' + err,
-        icon: 'none',
-        duration: 2000
-      })
-    });
   }
 })

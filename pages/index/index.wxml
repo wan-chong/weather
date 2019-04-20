@@ -12,7 +12,7 @@
     </view>
 
     <view class="location">
-      <text class="location" bindtap="goToCity" >{{ city }}</text>
+      <text class="location" data-goto="city" bindtap="goTo" >{{ city }}</text>
       <text class="iconfont icon-location"></text>
     </view>
 
@@ -137,4 +137,3 @@
 
 <!-- footer -->
 <view class='section' id='footer'>developed by wanchong</view>
-

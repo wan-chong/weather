@@ -1,4 +1,3 @@
-
 const QQMapWX = require('../libs/qqmap-wx-jssdk.min.js');
 const apiBaseUrl = 'https://free-api.heweather.net/s6/weather/';
 /**
@@ -13,7 +12,7 @@ const getSettingPromise = () => {
       },
       fail: err => {
         reject(err);
-      } 
+      }
     })
   })
 }
@@ -67,13 +66,13 @@ const keyHeWeather = '37262775385146b7b7f7f1ade53d46d6';
 const getWeatherLive = (city) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiBaseUrl +'now',
+      url: apiBaseUrl + 'now',
       data: {
         key: keyHeWeather,
         location: city
       },
       success: (res) => {
-        if(res.statusCode !== 200) {
+        if (res.statusCode !== 200) {
           reject(res.errMsg);
         } else {
           resolve(res.data.HeWeather6[0]);
@@ -140,7 +139,7 @@ const getHoursWeather = (city) => {
  * 获取一周天气数据
  */
 const getWeekWeather = (city) => {
-  
+
   return new Promise((resolve, reject) => {
     wx.request({
       url: apiBaseUrl + 'forecast',
