@@ -1,4 +1,7 @@
 // pages/city/city.js
+const keyHeWeather = '37262775385146b7b7f7f1ade53d46d6';
+const { fetch } = require('../../api/city.js');
+
 Page({
 
   /**
@@ -12,7 +15,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('aaa')
+    this.getTopCity();
+  },
 
+  getTopCity() {
+    fetch({
+      url: 'https://search.heweather.net/top',
+      data: {
+        key: keyHeWeather,
+        group: 'cn',
+        number: 10
+      }
+    }).then(res => {
+      console.log(res);
+    })
   },
 
   /**
