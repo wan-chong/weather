@@ -7,7 +7,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#4b97d3",
-    "navigationBarTitleText": "天气观",
+    "navigationBarTitleText": "观天气",
     "navigationBarTextStyle": "white"
   },
   "permission": {
