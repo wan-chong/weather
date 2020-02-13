@@ -9,6 +9,10 @@ view {
   box-sizing: border-box;
 }
 
+.row {
+  padding: 0 50rpx;
+}
+
 .flex-row-wrp {
   display: flex;
   flex-direction: row;

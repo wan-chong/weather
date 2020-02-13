@@ -8,7 +8,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    activeCity: '定位',
+    topCity: [
+      '定位',
+      '北京',
+      '上海',
+      '广州',
+      '深圳',
+      '杭州',
+      '成都',
+      '南京',
+      '天津'
+    ]
   },
 
   /**
@@ -30,6 +41,13 @@ Page({
     }).then(res => {
       console.log(res);
     })
+  },
+
+  /**
+   * 取消点击
+   */
+  cancelSearch: function() {
+    wx.navigateBack()
   },
 
   /**

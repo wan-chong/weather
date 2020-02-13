@@ -1,11 +1,20 @@
 <!--pages/city/city.wxml-->
 <!-- 搜索框 -->
-<view class='flex-row-wrp' id='search-wrp' >
-  <icon type='search'></icon>
-  <input class='flex-item' placeholder='请输入城市关键字搜索'></input>
+<view class='flex-row-wrp row' id='search-bar' >
+  <view class='search-input flex-item'>
+    <icon type='search'></icon>
+    <input placeholder='请输入城市关键字搜索'></input>
+  </view>
+  <text class="cancel" bindtap="cancelSearch">取消</text>
 </view>
 <!-- 热门城市 -->
-<view id="hot-city">
-  
+<view class="row" id="hot-city">
+  <view class="title">热门城市</view>
+  <text
+    wx:for="{{topCity}}"
+    wx:for-item="city"
+    wx:for-index="idx"
+    wx:key="unique"
+    class="city-item {{activeCity === city ? 'active' : ''}} {{idx % 3 === 0 ? 'row-start' : ''}} {{idx % 3 === 2 ? 'row-end' : ''}}">{{city}}</text>
 </view>
 <!-- 全部城市 -->
